@@ -27,8 +27,8 @@ export const getLevelColor = (level) => {
 
 export const getLevelName = (level) => {
   const names = [
-    '초보자', '견습생', '숙련자', '전문가', '고수',
-    '달인', '명인', '대가', '전설', '신화', '초월자'
+    '겨자씨🎍', '누룩🍞', '싹🌱', '들풀🌿', '백합🌸',
+    '참새🐦', '보화💎', '포도🍇', '양🐑', '소금🧂', '세상의 빛💡'
   ]
-  return names[Math.min(level, 10)] || '초월자'
+  return names[Math.min(level, 10)] || '세상의 빛💡'
 }
