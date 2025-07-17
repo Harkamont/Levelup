@@ -699,12 +699,31 @@ function App() {
 
         {userInfo.role === 'admin' && (
           <div className="bg-[#EC6034] rounded-2xl p-6 mt-4">
-            <h2 className="text-white text-xl font-bold mb-4">접근 제한</h2>
+            <h2 className="text-white text-xl font-bold mb-4">관리자 페이지</h2>
             <div className="text-white space-y-4">
-              <div className="bg-white/20 rounded-xl p-4 text-center">
-                <h3 className="font-bold mb-3">🔒 관리자 기능</h3>
-                <p className="mb-4">관리자 기능은 별도의 관리자 앱에서 이용하실 수 있습니다.</p>
-                <p className="text-sm text-white/80">보안을 위해 이 앱에서는 관리자 기능이 제한됩니다.</p>>
+              <div className="bg-white/20 rounded-xl p-4">
+                <h3 className="font-bold mb-3">👥 전체 사용자 관리</h3>
+                <button
+                  onClick={async () => {
+                    setAllUsersLoading(true)
+                    const { data } = await supabase
+                      .from('users')
+                      .select('*')
+                      .order('name', { ascending: true })
+                    setAllUsers(data || [])
+                    setAllUsersLoading(false)
+                  }}
+                  className="w-full bg-white text-[#EC6034] py-2 rounded-lg font-bold mb-3"
+                >
+                  {allUsersLoading ? '로딩 중...' : '사용자 목록 불러오기'}
+                </button>
+
+                {allUsers.length > 0 && (
+                  <div className="space-y-2 max-h-96 overflow-y-auto">
+                    {allUsers.map(user => (
+                      <div key={user.id} className="p-3 bg-white/10 rounded-lg text-sm">
+                        <div className="font-bold">{user.name} ({user.username})</div>
+                        <div>역할: {user.role} | 달란트: {user.talent || 0}점</div>
                         <div>학년: {user.grade || '미설정'} | 조: {user.group || '미설정'}</div>
                       </div>
                     ))}
