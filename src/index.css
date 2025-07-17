@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #21AFE6;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 모바일 우선 반응형 디자인 */
+@media (max-width: 480px) {
+  .mobile-container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+}
+
+/* 퍼즐 애니메이션 효과 */
+@keyframes puzzleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.puzzle-float {
+  animation: puzzleFloat 3s ease-in-out infinite;
+}
+
+/* 로딩 스피너 */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* 입력 필드 포커스 효과 */
+.input-focus:focus {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 버튼 호버 효과 */
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* 카드 그림자 효과 */
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
